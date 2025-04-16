@@ -1,0 +1,174 @@
+:root {
+  --card-width: 280px;
+  --card-height: 400px;
+  --card-spacing: 40px;
+  --animation-duration: 20s;
+  --glow-intensity: 0.5;
+  --hover-scale: 1.05;
+  --float-distance: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000510;
+  min-height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+  cursor: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.cards-container {
+  position: relative;
+  display: flex;
+  gap: var(--card-spacing);
+  padding: 50px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  background: rgba(0, 5, 15, 0.8);
+  border-radius: 15px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: opacity;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(var(--float-distance));
+  }
+}
+
+@keyframes autonomous-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(0, 225, 255, 0);
+    filter: brightness(0.1);
+    opacity: 0.1;
+  }
+  50% {
+    box-shadow: 0 0 50px var(--glow-color);
+    filter: brightness(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.card {
+  animation: float 3s ease-in-out infinite,
+    autonomous-glow var(--glow-duration, 4s) ease-in-out infinite
+      var(--glow-delay, 0s);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-image {
+  animation: flicker var(--flicker-duration, 5s) ease-in-out infinite
+    var(--flicker-delay, 0s);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: opacity;
+}
+
+.cursor-light {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) translateZ(0);
+  z-index: 1;
+  mix-blend-mode: screen;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --card-width: 220px;
+    --card-height: 320px;
+    --card-spacing: 20px;
+  }
+
+  .cards-container {
+    padding: 20px;
+  }
+}
