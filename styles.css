@@ -17,10 +17,7 @@ body {
   background: #000510;
   min-height: 100vh;
   overflow: hidden;
-  perspective: 1000px;
   cursor: none;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .container {
@@ -30,7 +27,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateZ(0);
   will-change: transform;
 }
 
@@ -53,7 +49,6 @@ body {
   transform-style: preserve-3d;
   transition: transform 0.3s ease;
   will-change: transform, opacity;
-  transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -79,7 +74,6 @@ body {
   object-fit: cover;
   transform-style: preserve-3d;
   transition: transform 0.3s ease;
-  transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   will-change: opacity;
@@ -113,13 +107,12 @@ body {
   animation: float 3s ease-in-out infinite,
     autonomous-glow var(--glow-duration, 4s) ease-in-out infinite
       var(--glow-delay, 0s);
-  transform: translateZ(0);
+
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .card-image {
-  transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   will-change: opacity;
