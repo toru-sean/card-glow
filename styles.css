@@ -85,10 +85,12 @@ body {
 @keyframes autonomous-glow {
   0%,
   100% {
+    box-shadow: 0 0 25px rgba(0, 225, 255, 0);
     filter: brightness(0.1);
     opacity: 0.1;
   }
   50% {
+    box-shadow: 0 0 25px var(--glow-color);
     filter: brightness(1.3);
     opacity: 1;
   }
