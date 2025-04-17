@@ -16,13 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set random animation timings
     const glowDuration = 3 + Math.random() * 4; // Between 3 and 7 seconds
     const glowDelay = Math.random() * -5; // Random start time
-    const flickerDuration = 2 + Math.random() * 3; // Between 2 and 5 seconds
-    const flickerDelay = Math.random() * -5; // Random start time
 
     card.style.setProperty("--glow-duration", `${glowDuration}s`);
     card.style.setProperty("--glow-delay", `${glowDelay}s`);
-    card.style.setProperty("--flicker-duration", `${flickerDuration}s`);
-    card.style.setProperty("--flicker-delay", `${flickerDelay}s`);
 
     card.innerHTML = `<img class="card-image" src="${creature.image}" alt="${creature.name}">`;
 

@@ -4,7 +4,6 @@
   --card-spacing: 40px;
   --animation-duration: 20s;
   --glow-intensity: 0.5;
-  --hover-scale: 1.05;
   --float-distance: 10px;
 }
 
@@ -74,10 +73,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-.card:hover::before {
-  opacity: 1;
-}
-
 .card-image {
   width: 100%;
   height: 100%;
@@ -103,23 +98,13 @@ body {
 @keyframes autonomous-glow {
   0%,
   100% {
-    box-shadow: 0 0 30px rgba(0, 225, 255, 0);
+    /* box-shadow: 0 0 30px rgba(0, 225, 255, 0); */
     filter: brightness(0.1);
     opacity: 0.1;
   }
   50% {
-    box-shadow: 0 0 50px var(--glow-color);
+    /* box-shadow: 0 0 50px var(--glow-color); */
     filter: brightness(1.3);
-    opacity: 1;
-  }
-}
-
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-  50% {
     opacity: 1;
   }
 }
@@ -134,8 +119,6 @@ body {
 }
 
 .card-image {
-  animation: flicker var(--flicker-duration, 5s) ease-in-out infinite
-    var(--flicker-delay, 0s);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
