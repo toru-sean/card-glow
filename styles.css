@@ -35,7 +35,6 @@ body {
   display: flex;
   gap: var(--card-spacing);
   padding: 50px;
-  transform-style: preserve-3d;
   will-change: transform;
 }
 
@@ -46,11 +45,8 @@ body {
   background: rgba(0, 5, 15, 0.8);
   border-radius: 15px;
   overflow: hidden;
-  transform-style: preserve-3d;
   transition: transform 0.3s ease;
   will-change: transform, opacity;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .card::before {
@@ -72,10 +68,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform-style: preserve-3d;
   transition: transform 0.3s ease;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   will-change: opacity;
 }
 
@@ -92,12 +85,10 @@ body {
 @keyframes autonomous-glow {
   0%,
   100% {
-    /* box-shadow: 0 0 30px rgba(0, 225, 255, 0); */
     filter: brightness(0.1);
     opacity: 0.1;
   }
   50% {
-    /* box-shadow: 0 0 50px var(--glow-color); */
     filter: brightness(1.3);
     opacity: 1;
   }
@@ -107,14 +98,9 @@ body {
   animation: float 3s ease-in-out infinite,
     autonomous-glow var(--glow-duration, 4s) ease-in-out infinite
       var(--glow-delay, 0s);
-
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 .card-image {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   will-change: opacity;
 }
 
@@ -133,8 +119,6 @@ body {
   z-index: 1;
   mix-blend-mode: screen;
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
 }
 
 @media (max-width: 768px) {
